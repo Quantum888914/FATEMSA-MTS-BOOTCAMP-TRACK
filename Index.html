@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FATEMSA | MTS Pre-Summit Technical Bootcamp '26</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0a1128;
+      --navy-light: #162447;
+      --yellow: #facc15;
+      --yellow-hover: #eab308;
+      --green: #0d9488;
+      --green-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* TOP ANNOUNCEMENT BAR */
+    .top-bar {
+      background: #050914;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .top-bar span {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    /* HEADER / HERO */
+    header {
+      background: radial-gradient(circle at 80% 20%, #1e293b 0%, var(--navy) 100%);
+      color: #ffffff;
+      padding: 3rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--yellow);
+    }
+
+    /* Subtle background grid effect */
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .org-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #e2e8f0;
+      margin-bottom: 1.25rem;
+    }
+
+    .main-title {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .main-title .highlight {
+      color: var(--yellow);
+      display: inline-block;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      font-weight: 400;
+    }
+
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge-chip .chip-label {
+      background: var(--yellow);
+      color: var(--navy);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--yellow);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(250, 204, 21, 0.4);
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-btn:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+    }
+
+    /* WHY JOIN US */
+    .why-join {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .yellow-tag {
+      background: var(--yellow);
+      color: var(--navy);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .why-icon {
+      color: #10b981;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* TRACK TABS */
+    .track-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 10px;
+      z-index: 50;
+      background: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 0;
+    }
+
+    .track-tab {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .track-tab:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .track-tab.active {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .track-tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 20%;
+      right: 20%;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 2px;
+    }
+
+    .tab-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.75;
+      font-weight: 700;
+    }
+
+    .tab-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-top: 0.15rem;
+    }
+
+    /* TRACK PANEL CONTENT */
+    .track-panel {
+      display: none;
+    }
+
+    .track-panel.active {
+      display: block;
+      animation: tabFadeIn 0.3s ease;
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .track-overview-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--navy);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+
+    .overview-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .overview-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .lead-badge {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .overview-item h5 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .overview-item p {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+
+    /* WEEKS ACCORDION */
+    .syllabus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .week-card {
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .week-header {
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      background: #ffffff;
+      transition: background 0.2s ease;
+    }
+
+    .week-header:hover {
+      background: #f8fafc;
+    }
+
+    .week-header-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .week-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--green-dark);
+    }
+
+    .week-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .chevron-icon {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+    }
+
+    .week-card.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .week-body {
+      display: none;
+      padding: 1.5rem 1.75rem;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+    }
+
+    .week-card.active .week-body {
+      display: block;
+    }
+
+    .session-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .session-col {
+      background: #f8fafc;
+      padding: 1.25rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--navy-light);
+    }
+
+    .session-col h5 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .session-col ul {
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .session-col li {
+      margin-bottom: 0.4rem;
+    }
+
+    .milestone-box {
+      background: #fffbeb;
+      border: 1px dashed #f59e0b;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .milestone-box h6 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #b45309;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .milestone-box p {
+      font-size: 0.9rem;
+      color: #92400e;
+      font-weight: 500;
+    }
+
+    /* SYNERGY & SUBMISSION CARDS */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-card h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card p, .info-card ul {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .info-card ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* ENQUIRIES FOOTER */
+    footer {
+      background: var(--green);
+      color: #ffffff;
+      padding: 2.5rem 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-heading {
+      font-weight: 800;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contacts-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-role {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .contact-phone {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-phone:hover {
+      text-decoration: underline;
+    }
+
+    .bottom-copyright {
+      background: #042f2c;
+      color: #94a3b8;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-content { text-align: left; }
+      .meta-badges { justify-content: flex-start; }
+      .track-tab.active::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    FACULTY OF TECHNOLOGY MUSLIM STUDENTS' ASSOCIATION (FATEMSA) • <span>MTS 3.0 INCUBATOR</span>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header>
+    <div class="header-content">
+      <div class="org-pill">FACULTY OF TECHNOLOGY MUSLIM STUDENTS' ASSOCIATION (FATEMSA) . OBAFEMI AWOLOWO UNIVERSITY (OAU)</div>
+      <h1 class="main-title">
+        MTS Pre-Summit<br><span class="highlight">Technical Bootcamp</span>
+      </h1>
+      <p class="subtitle">
+        6 Weeks of Intensive Hands-On Technical Training & Hackathon Incubation. Master essential skills, build real capstones, and qualify for live showcase at the Muslim Tech Summit.
+      </p>
+
+      <div class="meta-badges">
+        <div class="badge-chip"><span class="chip-label">STARTS</span> Nov 21, 2026</div>
+        <div class="badge-chip"><span class="chip-label">ENDS</span> Dec 27, 2026</div>
+        <div class="badge-chip"><span class="chip-label">VENUE</span> Google Meet</div>
+        <div class="badge-chip"><span class="chip-label">TUITION</span> 100% FREE</div>
+      </div>
+
+      <a href="https://bit.ly/4ePmu2O" target="_blank" class="hero-btn">
+        Register Now (Google Form) &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+
+    <!-- WHY JOIN US SECTION -->
+    <div class="why-join">
+      <div class="section-title-wrap">
+        <span class="yellow-tag">Why Join Us?</span>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-icon">✔</span>
+          <span>Direct Pipeline to MTS Hackathon & Exhibition</span>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">✔</span>
+          <span>Top 5 Capstone Projects Featured Live at Summit</span>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">✔</span>
+          <span>Verifiable FATEMSA Certificate of Completion</span>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">✔</span>
+          <span>Post-Summit Mentorship Circles with Senior Engineers & Alumni</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STICKY TRACK NAVIGATION -->
+    <div class="track-nav">
+      <button class="track-tab active" onclick="showTrack('hardware', this)">
+        <div class="tab-category">Track 01</div>
+        <div class="tab-title">Hardware & IoT</div>
+      </button>
+      <button class="track-tab" onclick="showTrack('aiml', this)">
+        <div class="tab-category">Track 02</div>
+        <div class="tab-title">AI & Machine Learning</div>
+      </button>
+      <button class="track-tab" onclick="showTrack('cad', this)">
+        <div class="tab-category">Track 03</div>
+        <div class="tab-title">Product Design (CAD)</div>
+      </button>
+      <button class="track-tab" onclick="showTrack('web', this)">
+        <div class="tab-category">Track 04</div>
+        <div class="tab-title">Web & Software</div>
+      </button>
+    </div>
+
+    <!-- ==================== TRACK 1: HARDWARE & IOT ==================== -->
+    <div id="hardware" class="track-panel active">
+      <div class="track-overview-card">
+        <div class="overview-top">
+          <div>
+            <h2 class="overview-title">Hardware Engineering & IoT Track</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">From fundamental circuit analysis and firmware architecture to edge telemetry and cloud dashboards.</p>
+          </div>
+          <span class="lead-badge">Tutor: Adam Adekanye</span>
+        </div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h5>Schedule</h5>
+            <p>Sat & Sun (60-90 Mins / Day)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Total Duration</h5>
+            <p>6 Weeks (12 Sessions)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Lab Platforms</h5>
+            <p>ESP32, Wokwi & Tinkercad</p>
+          </div>
+          <div class="overview-item">
+            <h5>Final Milestone</h5>
+            <p>Smart Connected Prototype</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="syllabus-list">
+        <!-- Week 1 -->
+        <div class="week-card active">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 01 • Nov 21–22</span>
+              <span class="week-name">Electronics Foundations & Embedded Prototyping</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 1: Circuit Principles (75m)</h5>
+                <ul>
+                  <li>Voltage, Current, Resistance, & Ohm's Law in practice.</li>
+                  <li>Component essentials: Resistors, LEDs, Switches, Breadboards.</li>
+                  <li>Microcontroller vs. Microprocessor architecture fundamentals.</li>
+                  <li>Power rails, ground references, and short-circuit prevention.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 2: Hands-on Lab (75m)</h5>
+                <ul>
+                  <li>Setting up the IDE (Arduino IDE / Wokwi Simulator workspace).</li>
+                  <li>ESP32 Pinout: GPIOs, 3.3V vs 5V logic safety.</li>
+                  <li>Wiring an LED circuit with calculated current-limiting resistors.</li>
+                  <li><strong>Live Lab:</strong> Manual push-button LED logic circuit.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 1</h6>
+              <p>Replicate a 3-stage traffic signal circuit on Wokwi/Tinkercad with proper resistor calculations and manual button input.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 02 • Nov 28–29</span>
+              <span class="week-name">Firmware Logic, Digital I/O & Non-Blocking Timing</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 3: Digital Inputs & Outputs (75m)</h5>
+                <ul>
+                  <li>Firmware lifecycle: Execution flow of setup() and loop().</li>
+                  <li>Digital writes: Active-high vs active-low logic levels.</li>
+                  <li>Digital reads: Floating pins and internal pull-up configuration.</li>
+                  <li>Contact bounce phenomenon & hardware/software debouncing.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 4: Control Logic & Timing (75m)</h5>
+                <ul>
+                  <li>The hazards of delay() in responsive embedded firmware.</li>
+                  <li>Non-blocking timing patterns using millis() counters.</li>
+                  <li>Building state-driven control logic for user interfaces.</li>
+                  <li><strong>Live Lab:</strong> Multi-function button controlling alarm modes.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 2</h6>
+              <p>Program a non-blocking dual-mode security beacon (Idle state vs Alert state triggered by push-button).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 03 • Dec 05–06</span>
+              <span class="week-name">Analog Signals, ADC & Environmental Sensing</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 5: ADC & Voltage Dividers (75m)</h5>
+                <ul>
+                  <li>Analog vs Digital signals: Resolution, voltage reference, and ADC steps.</li>
+                  <li>Resistive sensing: Reading Photoresistors (LDR) & Thermistors.</li>
+                  <li>Voltage divider equations & signal conditioning circuits.</li>
+                  <li>Pulse Width Modulation (PWM) for analog output simulation.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 6: Digital Sensors (75m)</h5>
+                <ul>
+                  <li>Interfacing modular digital sensors (DHT11/22 or Ultrasonic HC-SR04).</li>
+                  <li>Sensor data calibration, noise reduction & moving average filters.</li>
+                  <li>Threshold trigger logic for automated physical responses.</li>
+                  <li><strong>Live Lab:</strong> Smart ambient light-dimmer & obstacle detector.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 3</h6>
+              <p>Build an automated temperature and proximity alert monitor that sounds a piezo buzzer when limits are breached.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 04 • Dec 12–13</span>
+              <span class="week-name">Serial Communication Protocols & Local Displays</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 7: Bus Architectures (75m)</h5>
+                <ul>
+                  <li>Serial protocols overview: UART vs I2C vs SPI protocols.</li>
+                  <li>UART debugging: Baud rates, buffers & structured telemetry.</li>
+                  <li>I2C 2-wire bus architecture: Master-Slave addressing, SDA & SCL.</li>
+                  <li>Troubleshooting bus collisions & missing pull-up resistors.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 8: Display UI Interfacing (75m)</h5>
+                <ul>
+                  <li>Driving I2C OLED screens (SSD1306) or 16x2 LCD modules.</li>
+                  <li>Formatting on-screen telemetry, live gauges & status icons.</li>
+                  <li>Integrating multiple I2C peripherals on a shared two-wire bus.</li>
+                  <li><strong>Live Lab:</strong> Multi-sensor environmental dashboard on OLED.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 4</h6>
+              <p>Design a compact local telemetry station displaying temperature, humidity, and system uptime on an OLED screen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 05 • Dec 19–20</span>
+              <span class="week-name">Internet of Things (IoT) & Cloud Data Telemetry</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 9: Wi-Fi & Protocol Theory (75m)</h5>
+                <ul>
+                  <li>IoT Architecture: Edge nodes, Gateways, Cloud Brokers, Clients.</li>
+                  <li>ESP32 Wi-Fi Station (STA) mode & automatic connection handlers.</li>
+                  <li>Transport layer comparison: Lightweight MQTT vs HTTP REST APIs.</li>
+                  <li>MQTT Publish/Subscribe model, topics & JSON payloads.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 10: Cloud Dashboards (75m)</h5>
+                <ul>
+                  <li>Connecting to cloud platforms (Adafruit IO / Blynk / HiveMQ broker).</li>
+                  <li>Streaming live edge telemetry feeds into cloud charts.</li>
+                  <li>Remote actuator control: Toggling relays/LEDs from cloud buttons.</li>
+                  <li><strong>Live Lab:</strong> Bidirectional IoT link with remote control & graph.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 5</h6>
+              <p>Configure an IoT edge node that uploads periodic telemetry every 15s and accepts a remote override toggle.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 6 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 06 • Dec 26–27</span>
+              <span class="week-name">System Hardening, Cross-Track Synthesis & Summit Pitch</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Day 11: Edge Reliability (75m)</h5>
+                <ul>
+                  <li>Edge hardening: Watchdog timers, crash handling, power transients.</li>
+                  <li>Battery selection, power budgeting & sleep modes overview.</li>
+                  <li>Cross-track handoff: Formatted JSON APIs for Web & AI teams.</li>
+                  <li>Wiring cleanliness, wire dressing & prototype packaging.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Day 12: Review & Demos (75m)</h5>
+                <ul>
+                  <li>Live testing clinic, code optimization & sensor recalibration.</li>
+                  <li>Demo staging: Crafting a 3-minute technical pitch & live demo.</li>
+                  <li>Project rubric assessment against reliability & functionality.</li>
+                  <li><strong>Capstone Demo:</strong> End-to-end multi-track integrated showcase.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Final Deliverable</h6>
+              <p>Complete smart prototype (Smart Agriculture, Asset Tracker, or Energy Meter) ready for Muslim Tech Summit presentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TRACK 2: AI & MACHINE LEARNING ==================== -->
+    <div id="aiml" class="track-panel">
+      <div class="track-overview-card">
+        <div class="overview-top">
+          <div>
+            <h2 class="overview-title">AI & Machine Learning Track</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">A practical, beginner-friendly pathway to data exploration, model training, evaluation metrics, and responsible AI.</p>
+          </div>
+          <span class="lead-badge">Tutor: Abdullateef Atanda</span>
+        </div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h5>Schedule</h5>
+            <p>Sat & Sun (~2 Hours / Weekend)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Total Duration</h5>
+            <p>6 Weeks</p>
+          </div>
+          <div class="overview-item">
+            <h5>Lab Tools</h5>
+            <p>Python, Google Colab, Scikit-learn</p>
+          </div>
+          <div class="overview-item">
+            <h5>Final Milestone</h5>
+            <p>Trained ML Model & Notebook Report</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="syllabus-list">
+        <!-- Week 1 -->
+        <div class="week-card active">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 01 • Nov 21–22</span>
+              <span class="week-name">Introduction to AI, Machine Learning, and Python</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Concepts & Guided Learning (60m)</h5>
+                <ul>
+                  <li>What is Artificial Intelligence & Machine Learning?</li>
+                  <li>Supervised, unsupervised, and reinforcement learning.</li>
+                  <li>Real-world applications: finance, healthcare, agriculture, security.</li>
+                  <li>The ML workflow: problem definition to prediction.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Application & Practice (60m)</h5>
+                <ul>
+                  <li>Introduction to Python & Google Colab environment.</li>
+                  <li>Variables, data types, lists, dictionaries & operators.</li>
+                  <li>Conditional statements, loops & simple functions.</li>
+                  <li><strong>Practical:</strong> Small Python program with input/output calculations.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Weekly Assignment 1</h6>
+              <p>Identify one real-world problem AI/ML could solve. Explain the beneficiaries, dataset needed, and submit a basic Python Colab notebook.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 02 • Nov 28–29</span>
+              <span class="week-name">Python for Data Analysis & Visualizations</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: NumPy & Pandas Foundations (60m)</h5>
+                <ul>
+                  <li>Introduction to NumPy and Pandas dataframes.</li>
+                  <li>Understanding rows, columns, features, and records.</li>
+                  <li>Loading and inspecting sample CSV datasets.</li>
+                  <li>Summary statistics and data distributions.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Cleaning & Visualization (60m)</h5>
+                <ul>
+                  <li>Handling missing values and duplicate records.</li>
+                  <li>Basic data-cleaning techniques in Pandas.</li>
+                  <li>Matplotlib: Bar charts, line charts, and histograms.</li>
+                  <li><strong>Practical:</strong> Clean a small dataset and generate 2 data plots.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Weekly Assignment 2</h6>
+              <p>Explore a beginner dataset with Pandas, resolve at least one data-quality issue, and submit a notebook with 2 visualizations and 3 observations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 03 • Dec 05–06</span>
+              <span class="week-name">Understanding & Building Machine Learning Models</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Model Theory & Algorithms (60m)</h5>
+                <ul>
+                  <li>How machines learn: Features and target variables.</li>
+                  <li>Classification vs. Regression problem framing.</li>
+                  <li>Introduction to Linear/Logistic Regression, Decision Trees, KNN.</li>
+                  <li>Choosing the right algorithm for tabular data.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Scikit-learn Implementation (60m)</h5>
+                <ul>
+                  <li>Feature matrix (X) and target vector (y) separation.</li>
+                  <li>Splitting data: Train/test split methodology.</li>
+                  <li>Training a baseline model using Scikit-learn.</li>
+                  <li><strong>Practical:</strong> Generate predictions on unseen test records.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Weekly Assignment 3</h6>
+              <p>Train a basic machine learning model using a provided dataset. Submit your notebook explaining features, algorithm choice, and output.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 04 • Dec 12–13</span>
+              <span class="week-name">Model Evaluation and Responsible AI</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Performance Metrics (60m)</h5>
+                <ul>
+                  <li>Accuracy limitations in imbalanced datasets.</li>
+                  <li>Precision, Recall, F1-score & Confusion Matrices.</li>
+                  <li>Mean Absolute Error (MAE) and RMSE for regression.</li>
+                  <li>Understanding Underfitting vs. Overfitting.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Ethics & Generative AI (60m)</h5>
+                <ul>
+                  <li>Bias in datasets and machine learning predictions.</li>
+                  <li>Data privacy, transparency, and model explainability.</li>
+                  <li>Introduction to Generative AI & Large Language Models (LLMs).</li>
+                  <li><strong>Practical:</strong> Case study analysis on algorithmic bias.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Weekly Assignment 4</h6>
+              <p>Evaluate your Week 3 model using precision/recall or MAE. Document one limitation and propose a data-level improvement.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 05 • Dec 19–20</span>
+              <span class="week-name">Final Project Development & Pipeline Build</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Project Scoping & Sourcing (60m)</h5>
+                <ul>
+                  <li>Defining project objectives and success criteria.</li>
+                  <li>Sourcing open datasets (Kaggle / UCI Repository).</li>
+                  <li>Feature selection, preprocessing, and pipeline design.</li>
+                  <li>Tutor feedback clinic on proposed topics.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Guided Implementation (60m)</h5>
+                <ul>
+                  <li>Building an end-to-end ML pipeline in Google Colab.</li>
+                  <li>Model tuning and iterative evaluation.</li>
+                  <li>Error debugging and testing with hypothetical samples.</li>
+                  <li><strong>Practical:</strong> Complete first working model prototype.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Weekly Assignment 5</h6>
+              <p>Complete working project prototype notebook with short draft explaining problem, dataset, method, and results.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 6 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 06 • Dec 26–27</span>
+              <span class="week-name">Project Completion, Review & Presentation</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Polishing & Slide Prep (60m)</h5>
+                <ul>
+                  <li>Finalizing documentation, comments, and markdown cells.</li>
+                  <li>Preparing presentation slides or notebook walkthrough.</li>
+                  <li>Reviewing project grading rubric with mentors.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Live Project Demos (60m)</h5>
+                <ul>
+                  <li>Live cohort presentations (3 mins per participant/team).</li>
+                  <li>Explaining problem, dataset, algorithm, and real-world impact.</li>
+                  <li>Tutor assessment and selection of Top 5 Summit contenders.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Final Deliverable</h6>
+              <p>Submitted project notebook, short report, and presentation slides ready for the Muslim Tech Summit exhibition showcase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TRACK 3: PRODUCT DESIGN (CAD) ==================== -->
+    <div id="cad" class="track-panel">
+      <div class="track-overview-card">
+        <div class="overview-top">
+          <div>
+            <h2 class="overview-title">Product Design (3D CAD) Track</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Parametric part modeling, multi-component assemblies, technical documentation, and design for 3D printing.</p>
+          </div>
+          <span class="lead-badge">In Partnership with Lagos SWUG</span>
+        </div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h5>Program Plan</h5>
+            <p>6 Sessions × 5 Days = 30 Days</p>
+          </div>
+          <div class="overview-item">
+            <h5>Daily Commitment</h5>
+            <p>1 Hour / Day (30 Total Hours)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Software</h5>
+            <p>SOLIDWORKS</p>
+          </div>
+          <div class="overview-item">
+            <h5>Final Project</h5>
+            <p>Fabrication-Ready 3D Prototype</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="syllabus-list">
+        <!-- Session 1 -->
+        <div class="week-card active">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 01 • Days 1–5 (5 Hours)</span>
+              <span class="week-name">Introduction to 3D CAD & Parametric Modelling</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Curriculum Topics</h5>
+                <ul>
+                  <li>Introduction to CAD, SolidWorks UI and viewport navigation.</li>
+                  <li>2D sketches, geometric relations, and sketch dimensions.</li>
+                  <li>Fully defined sketches and preserving design intent.</li>
+                  <li>Extrude boss/base, extruded cut, and revolved features.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Hands-on Practice</h5>
+                <ul>
+                  <li>Daily guided drafting of standard prismatic geometry.</li>
+                  <li>Troubleshooting over-defined and dangling sketch entities.</li>
+                  <li><strong>Mini-Project:</strong> Model a simple mechanical spacer/component.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Session Milestone</h6>
+              <p>Portfolio Model 1: Fully defined 3D mechanical component submitted in native SLDPRT format.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 2 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 02 • Days 6–10 (5 Hours)</span>
+              <span class="week-name">Advanced Part Modelling & Design Tables</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Curriculum Topics</h5>
+                <ul>
+                  <li>Revolve, swept boss/base, and lofted solids.</li>
+                  <li>Linear/circular patterns, mirror features, and design reuse.</li>
+                  <li>Fillets, chamfers, shells, and structural ribs.</li>
+                  <li>Configurations and Excel-driven design tables.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Hands-on Practice</h5>
+                <ul>
+                  <li>Modeling organic curved profiles and structural brackets.</li>
+                  <li>Hollowing out geometry with uniform wall thicknesses.</li>
+                  <li><strong>Mini-Project:</strong> Model a functional mechanical casing.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Session Milestone</h6>
+              <p>Portfolio Model 2: Functional mechanical casing with ribs, shell, and mounting bosses.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 3 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 03 • Days 11–15 (5 Hours)</span>
+              <span class="week-name">Engineering Drawings & Design Documentation</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Curriculum Topics</h5>
+                <ul>
+                  <li>Drawing environment, standard sheet formats, and title blocks.</li>
+                  <li>Orthographic projections, isometric, and detailed section views.</li>
+                  <li>Dimensions, manufacturing tolerances, and surface annotations.</li>
+                  <li>Exploded views and automated Bill of Materials (BOM).</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Hands-on Practice</h5>
+                <ul>
+                  <li>Exporting 2D mechanical engineering blueprints.</li>
+                  <li>Assigning part numbers, material specs, and drawing revisions.</li>
+                  <li><strong>Mini-Project:</strong> Complete manufacturing drawing package.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Session Milestone</h6>
+              <p>Portfolio Package 3: Production drawing sheet PDF complete with title block, GD&T, and section details.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 4 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 04 • Days 16–20 (5 Hours)</span>
+              <span class="week-name">Assembly Design & Component Packaging</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Curriculum Topics</h5>
+                <ul>
+                  <li>Assembly workspace, importing parts, and ground components.</li>
+                  <li>Standard mates: Coincident, concentric, parallel, and distance.</li>
+                  <li>Subassemblies, flexible assemblies, and motion degrees.</li>
+                  <li>Clearance verification, interference detection, and collision checks.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Hands-on Practice</h5>
+                <ul>
+                  <li>Kinematic assembly mates for moving linkages.</li>
+                  <li>Packaging electronic components within custom enclosures.</li>
+                  <li><strong>Mini-Project:</strong> Assemble a small mechanical system.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Session Milestone</h6>
+              <p>Portfolio Model 4: Kinematic multi-part assembly file (SLDASM) with zero geometric interference.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 5 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 05 • Days 21–25 (5 Hours)</span>
+              <span class="week-name">Design for Physical Prototyping & Additive Manufacturing</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Curriculum Topics</h5>
+                <ul>
+                  <li>Design for Additive Manufacturing (DFAM) fundamentals.</li>
+                  <li>Minimum wall thickness, overhang angles, clearances, and print orientation.</li>
+                  <li>Exporting high-resolution STL and 3MF mesh formats.</li>
+                  <li>Introduction to slicers (Cura/PrusaSlicer) and infill patterns.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Hands-on Practice</h5>
+                <ul>
+                  <li>Optimizing part geometry for rapid FDM 3D printing.</li>
+                  <li>Calculating print volume, material usage, and layer heights.</li>
+                  <li><strong>Mini-Project:</strong> Prototype-ready hardware enclosure.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Session Milestone</h6>
+              <p>Portfolio Deliverable 5: Validated STL/3MF model file sliced and certified print-ready.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 6 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Session 06 • Days 26–30 (5 Hours)</span>
+              <span class="week-name">Capstone Design & Summit Showcase</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Capstone Workflow</h5>
+                <ul>
+                  <li>Define engineering problem statement & requirements.</li>
+                  <li>Model individual parametric parts and custom packaging.</li>
+                  <li>Assemble system, verify kinematic mates, and eliminate collisions.</li>
+                  <li>Produce production drawings and rendered 3D visuals.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Suggested Capstone Projects</h5>
+                <ul>
+                  <li><strong>Mini Desk Fan:</strong> Blades, hub, housing & motor mount.</li>
+                  <li><strong>Mini Gearbox:</strong> Spur gears, shafts, bearings & housing.</li>
+                  <li><strong>Adjustable Phone Stand:</strong> Parametric links & stability.</li>
+                  <li><strong>Mechanical Gripper:</strong> 4-bar linkage & motor bracket.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Final Deliverable</h6>
+              <p>Complete mechanical CAD portfolio, rendering sheet, and 3D printing manufacturing files ready for MTS presentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TRACK 4: WEB & SOFTWARE ==================== -->
+    <div id="web" class="track-panel">
+      <div class="track-overview-card">
+        <div class="overview-top">
+          <div>
+            <h2 class="overview-title">Web & Software Development Track</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">From semantic web layouts and responsive CSS to interactive React applications and live Vercel deployments.</p>
+          </div>
+          <span class="lead-badge">Tutor: Abdulqoyum Amuda</span>
+        </div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <h5>Schedule</h5>
+            <p>Sat & Sun (60-90 Mins / Day)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Total Duration</h5>
+            <p>6 Weeks (12 Sessions)</p>
+          </div>
+          <div class="overview-item">
+            <h5>Lab Tools</h5>
+            <p>VS Code, StackBlitz, GitHub, Vercel</p>
+          </div>
+          <div class="overview-item">
+            <h5>Final Milestone</h5>
+            <p>Live Hosted React Web Application</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="syllabus-list">
+        <!-- Week 1 -->
+        <div class="week-card active">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 01 • Nov 21–22</span>
+              <span class="week-name">Web Foundations & Semantic HTML</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: How the Web Works (75m)</h5>
+                <ul>
+                  <li>Client, server, browser, URL: what happens when a site loads.</li>
+                  <li>Setting up VS Code and inspecting pages with DevTools.</li>
+                  <li>HTML essentials: headings, text, links, images, lists.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Structure & Forms (75m)</h5>
+                <ul>
+                  <li>Semantic layouts: header, nav, main, section, footer.</li>
+                  <li>Form controls: inputs, email, textareas, select, submit buttons.</li>
+                  <li><strong>Live Lab:</strong> Build a personal profile page from scratch.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 1</h6>
+              <p>Build a personal or business profile page with a header, about section, list, image, and working contact form.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 02 • Nov 28–29</span>
+              <span class="week-name">CSS Styling, Box Model & Responsive Flexbox</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: CSS Basics (75m)</h5>
+                <ul>
+                  <li>Selectors, class hierarchy, and CSS cascading rules.</li>
+                  <li>The Box Model: margin, padding, border, and content sizing.</li>
+                  <li>Typography, font pairings, and clean color palettes.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Flexbox & Responsiveness (75m)</h5>
+                <ul>
+                  <li>Flexbox layouts: flex directions, alignment, and centering.</li>
+                  <li>Mobile-first design principles and CSS media queries.</li>
+                  <li><strong>Live Lab:</strong> Turn Week 1's page into a responsive landing page.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 2</h6>
+              <p>Design and build a responsive landing page for a product or event. It must look clean on both phone and laptop screens.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 03 • Dec 05–06</span>
+              <span class="week-name">JavaScript Fundamentals & DOM Manipulation</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Core JavaScript (75m)</h5>
+                <ul>
+                  <li>Variables (let/const), data types, and arithmetic operators.</li>
+                  <li>Conditional logic (if/else), switch statements, and loops.</li>
+                  <li>Functions, arrays, object manipulation, and ES6 basics.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: DOM & Events (75m)</h5>
+                <ul>
+                  <li>Selecting and altering HTML elements dynamically using JS.</li>
+                  <li>Event listeners: click, input, keypress, and submit events.</li>
+                  <li><strong>Live Lab:</strong> Build an interactive to-do app with add/delete.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 3</h6>
+              <p>Build an interactive single-page app (tip calculator, quiz, or to-do list) using vanilla JavaScript.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 04 • Dec 12–13</span>
+              <span class="week-name">Modern Web Frameworks: React & State</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: React Basics (75m)</h5>
+                <ul>
+                  <li>Why frontend frameworks exist; Node.js, npm, and Vite setup.</li>
+                  <li>Component-driven architecture, JSX syntax, and props passing.</li>
+                  <li>Deconstructing interfaces into modular reusable components.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: State & APIs (75m)</h5>
+                <ul>
+                  <li>Dynamic state management using React's useState hook.</li>
+                  <li>Rendering dynamic lists and passing event handlers.</li>
+                  <li>Fetching public API JSON data using fetch() / useEffect.</li>
+                  <li><strong>Live Lab:</strong> Rebuild to-do app in React with live API feed.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 4</h6>
+              <p>Build a React app that fetches and displays live data from a public API (weather, currency, or quotes).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 05 • Dec 19–20</span>
+              <span class="week-name">Version Control (Git/GitHub) & Backend Taste</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Git & GitHub (75m)</h5>
+                <ul>
+                  <li>Version control fundamentals: git init, add, commit, push.</li>
+                  <li>Creating GitHub repositories, branching, and pull requests.</li>
+                  <li>Writing a professional project README and open-source etiquette.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Backend Taste (75m)</h5>
+                <ul>
+                  <li>What backend servers do: routing, endpoints, JSON responses.</li>
+                  <li>Building a minimal Node.js / Express API.</li>
+                  <li>Introduction to database persistence (SQL vs NoSQL).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Milestone Assignment 5</h6>
+              <p>Push your React project to GitHub with a professional README and integrate it with an API endpoint.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Week 6 -->
+        <div class="week-card">
+          <div class="week-header" onclick="toggleCard(this)">
+            <div class="week-header-info">
+              <span class="week-tag">Week 06 • Dec 26–27</span>
+              <span class="week-name">Build Clinic, Cloud Deployment & Capstone Showcase</span>
+            </div>
+            <span class="chevron-icon">▼</span>
+          </div>
+          <div class="week-body">
+            <div class="session-cols">
+              <div class="session-col">
+                <h5>Saturday: Deploy & Polish (75m)</h5>
+                <ul>
+                  <li>Continuous deployment from GitHub via Vercel or Netlify.</li>
+                  <li>Managing environment variables and production build errors.</li>
+                  <li>Build clinic: UI debugging, mobile responsiveness, and audits.</li>
+                </ul>
+              </div>
+              <div class="session-col">
+                <h5>Sunday: Demos & Review (75m)</h5>
+                <ul>
+                  <li>Live code review clinic with tutors.</li>
+                  <li>Pitch training: Delivering a 3-minute technical project demo.</li>
+                  <li><strong>Capstone Showcase:</strong> Live presentations across the cohort.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="milestone-box">
+              <h6>Final Deliverable</h6>
+              <p>Complete project (dashboard, telemetry UI, or tool) hosted live on Vercel/Netlify with a public GitHub repo link.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CROSS-TRACK SYNERGY & SUBMISSION SECTION -->
+    <div class="secondary-grid">
+      <!-- Submission Workflow -->
+      <div class="info-card">
+        <h4>Assignment Submission Workflow</h4>
+        <p>Keep your track progress verified and qualify for completion certificates:</p>
+        <ul>
+          <li><strong>Step 1:</strong> Submit all weekly milestones through the central FATEMSA Google Form.</li>
+          <li><strong>Hardware:</strong> Submit public Wokwi simulator URLs (or GitHub code + 30s video demo for physical circuits).</li>
+          <li><strong>AI/ML:</strong> Submit public Google Colab links with executed output cells.</li>
+          <li><strong>Product Design:</strong> Upload native SLDPRT/SLDASM files, PDF drawings, and exported STL meshes.</li>
+          <li><strong>Web:</strong> Submit CodePen/StackBlitz links (W1–W3) and GitHub repos + live Vercel URLs (W4–W6).</li>
+        </ul>
+      </div>
+
+      <!-- Interdisciplinary Summit Synergy -->
+      <div class="info-card">
+        <h4>Interdisciplinary Track Synergy</h4>
+        <p>The 4 tracks are designed to collaborate directly on Muslim Tech Summit hackathon projects:</p>
+        <ul>
+          <li><strong>Hardware + Web:</strong> Hardware sensor nodes stream JSON data; Web track develops the cloud dashboard.</li>
+          <li><strong>Hardware + Product Design:</strong> Design track creates custom parametric 3D printed enclosures for sensor boards.</li>
+          <li><strong>Hardware + AI/ML:</strong> IoT sensors log physical telemetry to train predictive and anomaly detection models.</li>
+          <li><strong>AI/ML + Web:</strong> AI models are served via APIs into interactive web interfaces for end users.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER / ENQUIRIES -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-heading">For More Enquiries</div>
+        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem;">Reach out directly to the Bootcamp Coordination Team:</p>
+      </div>
+      <div class="contacts-grid">
+        <div class="contact-item">
+          <span class="contact-role">Coordinator</span>
+          <a class="contact-phone" href="tel:+2347063517865">+234 706 351 7865</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-role">Technical Lead</span>
+          <a class="contact-phone" href="tel:+2348142335693">+234 814 233 5693</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-role">General Secretary</span>
+          <a class="contact-phone" href="tel:+2349024841201">+234 902 484 1201</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="bottom-copyright">
+    © 2026 Faculty of Technology Muslim Students' Association (FATEMSA) • Obafemi Awolowo University, Ile-Ife
+  </div>
+
+  <!-- INTERACTIVE SCRIPT -->
+  <script>
+    // Tab switching function
+    function showTrack(trackId, tabElement) {
+      // Hide all panels
+      document.querySelectorAll('.track-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      // Deactivate all tabs
+      document.querySelectorAll('.track-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      // Activate selected panel and tab
+      document.getElementById(trackId).classList.add('active');
+      tabElement.classList.add('active');
+    }
+
+    // Accordion toggle function
+    function toggleCard(headerElement) {
+      const card = headerElement.closest('.week-card');
+      card.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
